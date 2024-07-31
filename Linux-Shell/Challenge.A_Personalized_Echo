@@ -1,0 +1,9 @@
+#! /bin/bash --
+
+
+read name
+[ ! -z "$name" ] && {
+
+  echo "Welcome $name"
+
+}

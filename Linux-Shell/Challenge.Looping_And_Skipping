@@ -1,0 +1,10 @@
+#! /bin/bash --
+
+
+cntr='1'
+while (( "$cntr" <= 100 )); do
+
+  echo "$cntr"
+  cntr="$(($cntr+2))"
+
+done
