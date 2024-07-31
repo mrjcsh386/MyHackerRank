@@ -1,0 +1,23 @@
+#! /bin/bash --
+
+
+read first_input
+read second_input
+
+# Sum
+Sum="$(( $first_input + $second_input ))"
+#Sum="${Sum//[+-]/}"
+
+# difference
+Diff="$(( $first_input - $second_input ))"
+#Diff="${Diff//[+-]/}"
+
+# Product
+Prod="$(( $first_input * $second_input ))"
+#Prod="${Prod//[+-]/}"
+
+# Quotient
+Quot="$(( $first_input / $second_input ))"
+#Quot="${Quot//[+-]/}"
+
+echo -e "$Sum\n$Diff\n$Prod\n$Quot"
