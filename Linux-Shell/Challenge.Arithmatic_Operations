@@ -1,0 +1,23 @@
+#! /bin/bash --
+
+
+read input_evaluation
+
+# Extracting all individual numbers from the expression
+numerals=( $( echo "$input_evaluation" | grep -oE '[0-9]+' ) )
+
+# Check each number, pass if less than, or equal to '999'
+for number in ${numerals[@]}; do
+
+  if (( "$number" > 999 )); then
+
+    echo "Number $number is greater than 999. Exiting"
+    exit 1
+
+  fi
+
+done
+
+result=$( echo "$input_evaluation" | bc -l | xargs printf "%.3f" )
+#result=$( echo "$result" | bc -l | xargs printf "%.3f" )
+printf "%.3f\n" "$result"

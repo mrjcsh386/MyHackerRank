@@ -1,0 +1,10 @@
+#! /bin/bash --
+
+
+read input_string
+case "$input_string" in
+
+  y | Y ) echo 'YES' ;;
+  n | N ) echo 'NO'  ;;
+
+esac

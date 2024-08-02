@@ -1,0 +1,80 @@
+#! /bin/bash --
+
+
+read first_input
+read second_input
+read third_input
+
+[[ "$first_input" =~ ^-?[0-9]+$ ]] && {
+
+  if (( "$first_input" < 0 )); then
+
+    echo 'Invalid input for X! Must be a positive integer.'
+    exit 2
+
+  fi
+
+} || {
+
+  echo 'X is not a number, try again'
+  exit 2
+
+}
+
+[[ "$second_input" =~ ^-?[0-9]+$ ]] && {
+
+  if (( "$second_input" < 0 )); then
+
+    echo 'Invalid input for Y! Must be a positive integer.'
+    exit 2
+
+  fi
+
+} || {
+
+  echo 'Y is not a number, try again'
+  exit 2
+
+}
+
+[[ "$third_input" =~ ^-?[0-9]+$ ]] && {
+
+  if (( "$third_input" < 0 )); then
+
+    echo 'Invalid input for Z! Must be a positive integer.'
+    exit 2
+
+  fi
+
+} || {
+
+  echo 'Z is not a number, try again'
+  exit 2
+
+}
+
+# Equilateral test
+(( "$first_input" == "$second_input" )) && (( "$first_input" == "$third_input" )) && {
+
+  echo 'EQUILATERAL'
+  exit 0
+
+}
+
+# Isosceles test.
+(( "$first_input" == "$second_input" )) && (( "$first_input" != "$third_input" )) && {
+
+  echo 'ISOSCELES'
+  exit 0
+
+}
+
+(( "$second_input" == "$third_input" )) && (( "$second_input" != "$first_input" )) && {
+
+  echo 'ISOSCELES'
+  exit 0
+
+}
+
+echo 'SCALENE'
+exit 0

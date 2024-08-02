@@ -1,0 +1,34 @@
+#! /bin/bash
+
+
+# Accepting input via stream
+read first_input
+read second_input
+[[ "$first_input" =~ ^-?[0-9]+$ ]] || {
+  echo 'X is not a valid number'
+  exit 2
+}
+
+[[ "$second_input" =~ ^-?[0-9]+$ ]] || {
+  echo 'Y is not a valid number'
+  exit 2
+}
+
+(( "$first_input" == "$second_input" )) && {
+
+  echo 'X is equal to Y'
+  exit
+
+}
+
+(( "$first_input" <= "$second_input" )) && {
+
+  echo 'X is less than Y'
+  exit
+
+} || {
+
+  echo 'X is greater than Y'
+  exit
+
+}
