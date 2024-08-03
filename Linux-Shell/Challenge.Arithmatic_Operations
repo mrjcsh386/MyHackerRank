@@ -19,5 +19,4 @@ for number in ${numerals[@]}; do
 done
 
 result=$( echo "$input_evaluation" | bc -l | xargs printf "%.3f" )
-#result=$( echo "$result" | bc -l | xargs printf "%.3f" )
 printf "%.3f\n" "$result"

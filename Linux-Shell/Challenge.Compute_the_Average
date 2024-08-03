@@ -1,0 +1,51 @@
+#! /bin/bash --
+
+
+# Accepting the total of expected numbers to be calculated.
+read -r expected_span
+
+sum_value=0
+
+for (( feed_count=0; feed_count<expected_span; feed_count++ )); do
+  # Accepting values from user to be added as a total for division.
+  read -r include_value
+
+  # Filtering out non-numeric values
+  if ! [[ "$include_value" =~ ^-?[0-9]+$ ]]; then
+
+    echo "Value given, $include_value, is not a number. Try again."
+    exit 2
+
+  fi
+
+  # Filtering out empty values
+  if [ -z "$include_value" ]; then
+
+    echo "A value is required in order to calculate. Try again."
+    exit 2
+
+  fi
+
+  # Add the value to the sum using bc
+  sum_value=$( bc <<< "scale=3; $sum_value + $include_value" )
+
+done
+
+# Calculate the average using bc
+total_value=$( awk "BEGIN {printf \"%.3f\", $sum_value / $expected_span}" )
+
+# Check if the result is within the allowed range
+if [ $( bc <<< "scale=0; $total_value < -10000" ) -eq 1 ]; then
+
+  echo "Total average value, $total_value, is out of range."
+  exit 2
+
+elif [ $( bc <<< "scale=0; $total_value > 10000" ) -eq 1 ]; then
+
+  echo "Total average value, $total_value, is out of range."
+  exit 2
+
+fi
+
+# Print the result with 3 decimal places.
+printf "%.3f\n" "$total_value"
