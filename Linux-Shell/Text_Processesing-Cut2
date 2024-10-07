@@ -1,0 +1,29 @@
+#! /bin/bash --
+
+
+# Description: Display the 2nd and 7th character from each line of text.
+
+# Input Format: A text file with N lines of ASCII text only.
+
+# Output Format: The output should contain N lines. Each line should contain
+#               just two characters at the 2nd and the 7th position of the
+#               corresponding input line.
+
+# Sample Input
+#
+#    Hello
+#    World
+#    how are you
+
+# Sample Output
+#
+#    e
+#    o
+#    oe
+
+# The script proper ---------------
+while IFS= read -r line; do
+
+  echo "$line" | cut -b 2,7
+
+done
