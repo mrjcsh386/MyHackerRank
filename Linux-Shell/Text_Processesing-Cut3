@@ -1,0 +1,30 @@
+#! /bin/bash --
+
+
+# Description: Display a range of characters starting at the 2nd position of
+#              a string and ending at the 7th psition (both positions included)
+
+# Input Format: A text file containing N lines of ASCII text only.
+
+# Output Format: The output should contain N lines. Each line should contain
+#              the range of characters starting at the 2nd position of a string
+#              and ending at the 7th position (both positions included).
+
+# Sample Input
+#
+#    Hello
+#    World
+#    how are you
+
+# Sample Output
+#
+#    ello
+#    orld
+#    ow are
+
+# The script proper ---------
+while IFS= read -r line; do
+
+  echo "$line" | cut -b 2-7
+
+done
